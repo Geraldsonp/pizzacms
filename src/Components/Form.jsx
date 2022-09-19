@@ -44,51 +44,31 @@ export default class Form extends Component {
       <div>
         <form onSubmit={this.submitHandler}>
           <div className='m-1 grid grid-cols-4'>
-            <label className='text-center col-span-2 text-xl' htmlFor='name'>
+            <label className='label' htmlFor='name'>
               Name
             </label>
-            <input
-              onChange={this.changeHandler}
-              className='col-span-2 col-start-3 border-solid border-2'
-              type='text'
-              name='Name'
-              id='name'
-            />
+            <input onChange={this.changeHandler} className='input' type='text' name='Name' id='name' />
           </div>
           <div className='m-1 grid grid-cols-4'>
-            <label className='text-center col-span-2 text-xl' htmlFor='Description'>
+            <label className='label' htmlFor='Description'>
               Description
             </label>
-            <input
-              onChange={this.changeHandler}
-              className='col-span-2 col-start-3 border-solid border-2'
-              type='text'
-              name='Description'
-              id='Description'
-            />
+            <input onChange={this.changeHandler} className='input' type='text' name='Description' id='Description' />
           </div>
           <div className='m-1 grid grid-cols-4'>
-            <label className='text-center col-span-2 text-xl' htmlFor='isAvailable'>
+            <label className='label' htmlFor='isAvailable'>
               Is Available
             </label>
-            <select
-              onChange={this.changeHandler}
-              className='col-span-2 col-start-3  border-solid border-2'
-              name='isAvailable'
-              id='isAvailable'>
+            <select onChange={this.changeHandler} className='input' name='isAvailable' id='isAvailable'>
               <option value='true'>True</option>
               <option value='false'>false</option>
             </select>
           </div>
           <div className='m-1 grid grid-cols-4'>
-            <label className='text-center col-span-2 text-xl' htmlFor='CategoryId'>
+            <label className='label' htmlFor='CategoryId'>
               Category
             </label>
-            <select
-              onChange={this.changeHandler}
-              className='col-span-2 col-start-3  border-solid border-2'
-              name='CategoryId'
-              id='CategoryId'>
+            <select onChange={this.changeHandler} className='input' name='CategoryId' id='CategoryId'>
               <option value='1'>Pizzas</option>
               <option value='2'>Empanadas</option>
               <option value='3'>Bebidas</option>
@@ -96,16 +76,10 @@ export default class Form extends Component {
             </select>
           </div>
           <div className='m-1 grid grid-cols-4'>
-            <label className='text-center col-span-2 text-xl' htmlFor='Img'>
+            <label className='label' htmlFor='Img'>
               ImgUrl
             </label>
-            <input
-              onChange={this.changeHandler}
-              className='col-span-2 col-start-3 border-solid border-2'
-              type='text'
-              name='Img'
-              id='Img'
-            />
+            <input onChange={this.changeHandler} className='input' type='text' name='Img' id='Img' />
           </div>
           <h4 className='text-center col-span-6 border-t border-b my-1 font-bold'>Prices</h4>
           {Tamaños.map(tama => (
@@ -115,7 +89,7 @@ export default class Form extends Component {
               </label>
               <input
                 onChange={this.changeHandler}
-                className='col-span-2 col-start-3 border-solid border-2'
+                className='col-span-2 px-3 col-start-3 border-solid border-2'
                 type='text'
                 name='Tamaños'
                 id={tama.size}

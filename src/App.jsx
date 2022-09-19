@@ -14,7 +14,6 @@ function App() {
 
   const handleCategory = cat => {
     setProducts(cat.products);
-    catid = cat.id;
   };
 
   function removeProduct(id) {
@@ -33,15 +32,13 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='grid '>
       <NavBar OnHandleCategory={handleCategory} categories={categories}></NavBar>
-      <div className='mx-auto w-11/12 lg:w-10/12 mt-3'>
-        <ItemsList
-          title={"Products"}
-          products={products}
-          onDelete={removeProduct}
-          onSubmit={handleCreateProduct}></ItemsList>
-      </div>
+      <ItemsList
+        title={"Products"}
+        products={products}
+        onDelete={removeProduct}
+        onSubmit={handleCreateProduct}></ItemsList>
     </div>
   );
 }

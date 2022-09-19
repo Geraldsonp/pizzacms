@@ -12,7 +12,7 @@ export const Item = ({ pizza, onDelete }) => {
   return (
     <tr className='border-b border-gray-700 mb-5' key={pizza.id}>
       <td>
-        <img className='w-32' src={pizza.img} alt='' />
+        <img className='w-36' src={pizza.img} alt='' />
       </td>
       <td className='py-4 px-6 font-bold'>{pizza.name}</td>
       <td className='py-4 px-6'>
@@ -22,8 +22,8 @@ export const Item = ({ pizza, onDelete }) => {
           </p>
         ))}
       </td>
-      <td className='py-4 px-6'>{pizza.description}</td>
-      <td className='py-4 px-6'>
+      <td className='py-4 px-6 hidden md:table-cell max-w-[200px]'>{pizza.description}</td>
+      <td className='py-4 px-6 hidden md:table-cell'>
         <span className={AvailableBadge(pizza.isAvailable)}>{availableText}</span>
       </td>
       <td className='py-4 px-6'>

@@ -15,7 +15,7 @@ export default function AddEditModal({ isOpen, OnClose, onFormSubmit }) {
         }>
         <div className='modal-overlay absolute w-full h-full bg-gray-900 opacity-50'></div>
 
-        <div className='modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded shadow-lg z-50 overflow-y-auto'>
+        <div className='modal-container bg-gray-300 w-11/12 md:max-w-xl mx-auto rounded shadow-lg z-50 overflow-y-auto'>
           <div className=' absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-black text-sm z-50'>
             <span className='text-sm material-icons hover:cursor-pointer' onClick={OnClose}>
               close
