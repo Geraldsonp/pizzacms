@@ -15,13 +15,7 @@ export const Item = ({ pizza, onDelete }) => {
         <img className='w-36' src={pizza.img} alt='' />
       </td>
       <td className='py-4 px-6 font-bold'>{pizza.name}</td>
-      <td className='py-4 px-6'>
-        {pizza.tamaños.map(price => (
-          <p key={price.id}>
-            {price.size}:{price.price}
-          </p>
-        ))}
-      </td>
+      <td className='py-4 px-6'>{pizza.price}</td>
       <td className='py-4 px-6 hidden md:table-cell max-w-[200px]'>{pizza.description}</td>
       <td className='py-4 px-6 hidden md:table-cell'>
         <span className={AvailableBadge(pizza.isAvailable)}>{availableText}</span>

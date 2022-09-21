@@ -10,27 +10,12 @@ export default class Form extends Component {
       IsAvailable: true,
       Img: "",
       CategoryId: 0,
-      Tamaño: [
-        { Price: 0, size: "Pequeña" },
-        { Price: 0, size: "Mediana" },
-        { Price: 0, size: "Grande" },
-      ],
+      Price: 0,
     };
   }
 
   changeHandler = e => {
-    if (e.target.name == "Tamaños") {
-      console.log("from if");
-      var newState = this.state.Tamaño.map(tam => {
-        if (tam.size == e.target.id) {
-          return { ...tam, Price: e.target.value };
-        }
-        return tam;
-      });
-      this.setState({ ["Tamaño"]: newState });
-    } else {
-      this.setState({ [e.target.name]: e.target.value });
-    }
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   submitHandler = e => {
@@ -39,7 +24,6 @@ export default class Form extends Component {
   };
 
   render() {
-    const { Tamaño: Tamaños } = this.state;
     return (
       <div>
         <form onSubmit={this.submitHandler}>
@@ -82,21 +66,19 @@ export default class Form extends Component {
             <input onChange={this.changeHandler} className='input' type='text' name='Img' id='Img' />
           </div>
           <h4 className='text-center col-span-6 border-t border-b my-1 font-bold'>Prices</h4>
-          {Tamaños.map(tama => (
-            <div className='m-1 grid grid-cols-4' key={tama.size}>
-              <label className='text-center col-span-2 text-xl' htmlFor={tama.size}>
-                {tama.size}
-              </label>
-              <input
-                onChange={this.changeHandler}
-                className='col-span-2 px-3 col-start-3 border-solid border-2'
-                type='text'
-                name='Tamaños'
-                id={tama.size}
-                value={tama.Price}
-              />
-            </div>
-          ))}
+          <div className='m-1 grid grid-cols-4'>
+            <label className='text-center col-span-2 text-xl' htmlFor='Price'>
+              Price
+            </label>
+            <input
+              onChange={this.changeHandler}
+              className='col-span-2 px-3 col-start-3 border-solid border-2'
+              type='text'
+              name='Price'
+              id='Price'
+              value={this.state.Price}
+            />
+          </div>
           <div className='flex justify-end pt-2'>
             <button
               type='submit'
