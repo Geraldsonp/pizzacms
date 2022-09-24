@@ -9,7 +9,7 @@ export default class Form extends Component {
       Description: "",
       IsAvailable: true,
       Img: "",
-      CategoryId: 0,
+      CategoryId: 1,
       Price: 0,
     };
   }
