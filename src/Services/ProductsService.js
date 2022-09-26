@@ -21,14 +21,23 @@ export function getCategories() {
 }
 
 export async function CreateProduct(product) {
-  return await axios
-    .post(URL + "products", JSON.stringify(product), {
-      headers: headers,
-    })
-    .then(response => {
-      if (!response.status == 200) throw new Error("Status:" + response.status);
-      else return response.data;
-    });
+  var newformData = new FormData();
+  newformData.append("Name", product.Name);
+  newformData.append("Description", product.Description);
+  newformData.append("IsAvailable", product.IsAvailable);
+  newformData.append("Img", product.Img, product.Img.name);
+  newformData.append("CategoryId", product.CategoryId);
+  newformData.append("Price", product.Price);
+
+  return await axios({
+    method: "POST",
+    url: URL + "products",
+    headers: { "Content-Type": "multipart/form-data", Accept: "*/*" },
+    data: newformData,
+  }).then(response => {
+    if (!response.status == 200) throw new Error("Status:" + response.status);
+    else return response.data;
+  });
 }
 
 export function DeleteProduct(id) {

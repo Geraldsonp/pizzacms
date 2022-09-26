@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <div className='grid '>
+    <div className='grid grid-flow-row'>
       <NavBar OnHandleCategory={handleCategory} categories={categories}></NavBar>
       <ItemsList
         title={"Products"}

@@ -8,14 +8,18 @@ export default class Form extends Component {
       Name: "",
       Description: "",
       IsAvailable: true,
-      Img: "",
+      Img: null,
       CategoryId: 1,
       Price: 0,
     };
   }
 
   changeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name == "Img") {
+      this.setState({ [e.target.name]: e.target.files[0] });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   };
 
   submitHandler = e => {
@@ -61,13 +65,12 @@ export default class Form extends Component {
           </div>
           <div className='m-1 grid grid-cols-4'>
             <label className='label' htmlFor='Img'>
-              ImgUrl
+              Img
             </label>
-            <input onChange={this.changeHandler} className='input' type='text' name='Img' id='Img' />
+            <input onChange={this.changeHandler} className='input' type='file' name='Img' id='Img' />
           </div>
-          <h4 className='text-center col-span-6 border-t border-b my-1 font-bold'>Prices</h4>
           <div className='m-1 grid grid-cols-4'>
-            <label className='text-center col-span-2 text-xl' htmlFor='Price'>
+            <label className='label' htmlFor='Price'>
               Price
             </label>
             <input
@@ -82,13 +85,13 @@ export default class Form extends Component {
           <div className='flex justify-end pt-2'>
             <button
               type='submit'
-              className='px-4 bg-green-600 py-1  rounded-lg text-white hover:bg-orange-300 hover:text-indigo-400 mr-2 transition'>
+              className='px-4 bg-dark py-1  rounded-lg text-white hover:bg-orange-300 hover:text-gold mr-2 transition'>
               Save
             </button>
             <button
               type='button'
               onClick={this.props.OnClose}
-              className='modal-close px-4 bg-indigo-500 py-1 rounded-lg text-white hover:bg-indigo-400 transition'>
+              className='modal-close px-4 bg-dark py-1 rounded-lg text-white hover:text-red-600 transition'>
               Close
             </button>
           </div>

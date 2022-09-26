@@ -15,18 +15,18 @@ export default function AddEditModal({ isOpen, OnClose, onFormSubmit }) {
         }>
         <div className='modal-overlay absolute w-full h-full bg-gray-900 opacity-50'></div>
 
-        <div className='modal-container bg-gray-300 w-11/12 md:max-w-xl mx-auto rounded shadow-lg z-50 overflow-y-auto'>
-          <div className=' absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-black text-sm z-50'>
-            <span className='text-sm material-icons hover:cursor-pointer' onClick={OnClose}>
+        <div className='modal-container bg-pastel w-11/12 md:max-w-xl mx-auto rounded shadow-lg z-50 overflow-y-auto'>
+          <div className=' absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-gold  z-50'>
+            <span className='text-2xl material-icons hover:cursor-pointer' onClick={OnClose}>
               close
             </span>
           </div>
 
           <div className='modal-content py-4 text-left px-6'>
             <div className='flex justify-between items-center pb-3'>
-              <p className='text-2xl font-bold text-center flex-grow'>Create Product</p>
+              <p className='text-2xl text-orange font-bold text-center flex-grow'>Create Product</p>
               <span
-                className='modal-close cursor-pointer z-50 material-icons hover:text-orange-500 transition '
+                className='modal-close text-orange cursor-pointer z-50 material-icons hover:text-orange-500 transition '
                 onClick={OnClose}>
                 close
               </span>

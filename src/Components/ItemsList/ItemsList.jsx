@@ -27,7 +27,7 @@ export default function ItemsList({ title, products, onDelete, onSubmit }) {
   }
 
   return (
-    <div className='mx-auto'>
+    <div className='mx-auto overflow-x-auto w-10/12 xl:w-3/4 text-xl lg:text-[1rem] shadow-lg p-2 bg-pastel'>
       <AddEditModal
         isOpen={ShowEdit}
         OnClose={ShowEditModal}
@@ -38,23 +38,23 @@ export default function ItemsList({ title, products, onDelete, onSubmit }) {
         onDeleteConfirmation={handleDeleteConfirmation}
         isOpen={isOpen}
         OnClose={ShowDeleteModal}></DeleteModal>
-      <div className='grid grid-cols-6 	place-items-center'>
-        <h1 className=' font-bold text-3xl text-orange-600 col-span-5 text-center'>Manage {title}</h1>
+      <div className='grid grid-cols-6 place-items-center '>
+        <h1 className=' font-bold text-3xl text-orange-600 col-span-5 text-center'>Manage Products</h1>
         <span
-          className='material-icons self-center border border-orange-400 rounded-2xl  text-green-400 text-4xl font-bold hover:cursor-pointer hover:bg-gray-200 px-3 mt-2'
+          className='material-icons px-3  rounded-lg  
+           text-orange text-4xl font-bold hover:cursor-pointer hover:bg-gray-200 my-2'
           onClick={ShowEditModal}>
           add
         </span>
       </div>
-      <div className='overflow-x-auto mt-3'></div>
-      <table className=' text-left rounded-md'>
-        <thead className='text-sm  uppercase bg-[#E0D98C]'>
+      <div className=' mt-3 '></div>
+      <table className=' text-center rounded-md w-full'>
+        <thead className='text-sm  uppercase bg-gold '>
           <tr className=''>
             <th className='py-3 px-6'>Image</th>
             <th className='py-3 px-6 '>Name</th>
             <th className='py-3 px-6'>Price</th>
-            <th className='py-3 px-6 hidden md:table-cell'>Description</th>
-            <th className='py-3 px-6 hidden md:table-cell'>Available</th>
+            <th className='py-3 px-6 hidden lg:table-cell'>Description</th>
             <td className='py-4 px-6'></td>
           </tr>
         </thead>

@@ -6,20 +6,18 @@ export default function DeleteModal({ isOpen, OnClose, onDeleteConfirmation }) {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
-    <div className=' mx-auto overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full bg-gray-700 bg-opacity-70'>
+    <div className=' mx-auto overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full bg-gray-800 bg-opacity-70'>
       <div className='relative top-[30%] m-auto p-4 w-full max-w-md '>
-        <div className='relative bg-white rounded-lg shadow '>
+        <div className='relative bg-pastel rounded-lg shadow '>
           <button
             type='button'
-            className='absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white'
+            className='absolute top-3 right-2.5 text-dark bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white'
             onClick={OnClose}>
             <span className='material-icons'>close</span>
           </button>
           <div className='p-6 text-center'>
-            <span className='material-icons text-red-500 text-4xl'>warning</span>
-            <h3 className='mb-5 text-lg font-normal text-gray-500 dark:text-gray-400'>
-              Are you sure you want to delete this product?
-            </h3>
+            <span className='material-icons text-red-600 text-4xl'>warning</span>
+            <h3 className='mb-5 text-lg font-normal text-dark '>Are you sure you want to delete this product?</h3>
             <button
               onClick={() => onDeleteConfirmation(true)}
               data-modal-toggle='popup-modal'

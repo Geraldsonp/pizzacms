@@ -1,20 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;500;700&display=swap');
+
+
 body{
-    font-family: 'Roboto Mono', monospace;
-    
+    width: 100vw;
 }   
 html{
-    font-size: 18px;
-    width: 100%;
-    min-width: 467px;
+    font-size: 11px;
+    width: 100vw;
+    @apply bg-pastel md:text-lg lg:text-xl
 }
 
 .input{
-    @apply col-span-2 col-start-3 border-solid border-2 px-3
+    @apply col-span-2 col-start-3 border-solid border-2 p-1 bg-gray-100 rounded-md
 }
 .label{
-    @apply text-center col-span-2 text-xl
+    @apply text-center col-span-2 text-xl font-bold
 }
+
+.disponible-badge{
+    @apply  text-green-500 text-xs font-semibold mr-2 px-4 py-2 rounded absolute top-0 right-0
+}
+
+.nodisponible-badge{
+        @apply  text-red-800 text-xs font-semibold mr-2 px-4 py-0.5 rounded absolute top-0 left-0 
+}   
