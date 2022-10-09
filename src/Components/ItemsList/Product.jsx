@@ -8,10 +8,10 @@ export const Item = ({ pizza, onDelete }) => {
     <tr className='border-b border-gray-700 mb-5 file:' key={pizza.id}>
       <td className='relative p-2'>
         <span className={pizza.isAvailable ? "disponible-badge" : "nodisponible-badge"}>{availableText}</span>
-        <img className='w-36 min-w-[7rem]' src={pizza.img} alt='' />
+        <img className='w-[90px]' src={pizza.img} alt='' />
       </td>
-      <td className='py-4 px-6 font-bold '>{pizza.name}</td>
-      <td className='py-4 px-6'>{pizza.price}</td>
+      <td className='py-2 px-6 font-bold '>{pizza.name}</td>
+      <td className='py-2 px-6'>{pizza.price}</td>
       <td className='py-4 px-6 hidden lg:table-cell max-w-[18rem] min-w-[250px]'>{pizza.description}</td>
       <td className='py-4 px-6'>
         <a>

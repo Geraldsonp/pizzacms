@@ -1,44 +1,40 @@
 import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import NavBar from "./Components/Header/NavBar";
-import ItemsList from "./Components/ItemsList/ItemsList";
-import { CreateProduct, DeleteProduct, getCategories, getProducts } from "./Services/ProductsService";
+import Products from "./Components/ItemsList/Products";
+import Login from "./Components/Login/Login";
+import AuthService from "./Services/AuthService";
 
 function App() {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [isLogin, setIslogin] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    getProducts().then(data => setProducts(data));
-    getCategories().then(data => setCategories(data));
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
 
-  const handleCategory = cat => {
-    setProducts(cat.products);
+  useEffect(() => {
+    if (user !== null) {
+      setIslogin(true);
+    } else {
+      setIslogin(false);
+    }
+  });
+
+  const handleLogOut = () => {
+    AuthService.logout();
+    setUser(null);
+    setIslogin(false);
   };
-
-  function removeProduct(id) {
-    DeleteProduct(id);
-    var newList = products.filter(x => x.id != id);
-    setProducts(newList);
-  }
-
-  async function handleCreateProduct(product) {
-    await CreateProduct(product)
-      .then(response => {
-        var temp = [...products, response];
-        setProducts(temp);
-      })
-      .catch(error => console.log(error));
-  }
 
   return (
     <div className='grid grid-flow-row'>
-      <NavBar OnHandleCategory={handleCategory} categories={categories}></NavBar>
-      <ItemsList
-        title={"Products"}
-        products={products}
-        onDelete={removeProduct}
-        onSubmit={handleCreateProduct}></ItemsList>
+      <NavBar OnLogout={handleLogOut} UserName={user?.name} loginStatus={isLogin}></NavBar>
+      <Routes>
+        <Route path='/' element={isLogin ? <Products></Products> : <Login></Login>}></Route>
+        <Route path='/home' element={isLogin ? <Products></Products> : <Login></Login>}></Route>
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </div>
   );
 }

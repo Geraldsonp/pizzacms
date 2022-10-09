@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { CreateProduct } from "../Services/ProductsService";
 
 export default class Form extends Component {
   constructor(props) {

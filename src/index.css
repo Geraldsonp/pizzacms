@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
+:root{
+    font-size: 16px;
+}
 body{
     width: 100vw;
 }   
 html{
-    font-size: 11px;
     width: 100vw;
     @apply bg-pastel md:text-lg lg:text-xl
 }
