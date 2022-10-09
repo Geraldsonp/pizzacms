@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:7197/api/auth/";
+//const URL = "https://localhost:7197/api/";
+const URL = "https://pizzeriawebapi.herokuapp.com/api/";
 
 export class AuthService {
   async login(userName, password) {
