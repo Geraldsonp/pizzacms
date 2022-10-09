@@ -5,7 +5,7 @@ const URL = "https://pizzeriawebapi.herokuapp.com/api/";
 
 export class AuthService {
   async login(userName, password) {
-    const response = await axios.post(API_URL + "Login", {
+    const response = await axios.post(URL + "auth/Login", {
       userName,
       password,
     });
@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   register(username, email, password) {
-    return axios.post(API_URL + "signup", {
+    return axios.post(URL + "auth/signup", {
       username,
       email,
       password,
