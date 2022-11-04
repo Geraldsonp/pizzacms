@@ -22,9 +22,10 @@ function App() {
   };
 
   const HandleDemoLogin = () => {
-    AuthService.DemoUser();
-    setIslogin(true);
-    navigate("/home");
+    AuthService.DemoUser().then(() => {
+      setIslogin(true);
+      navigate("/home");
+    });
   };
 
   const handleLogOut = () => {
@@ -40,7 +41,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Products isLogin={isLogin}></Products>}></Route>
         <Route path='/home' element={<Products isLogin={isLogin}></Products>}></Route>
-        <Route path='/login' element={<Login OnlogIn={() => handleLogIn} OnDemoLogIn={HandleDemoLogin} />} />
+        <Route path='/login' element={<Login OnlogIn={handleLogIn} OnDemoLogIn={HandleDemoLogin} />} />
       </Routes>
     </div>
   );

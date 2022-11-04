@@ -15,9 +15,6 @@ export const Item = ({ pizza, onDelete }) => {
       <td className='py-4 px-6 hidden lg:table-cell max-w-[18rem] min-w-[250px]'>{pizza.description}</td>
       <td className='py-4 px-6'>
         <a>
-          <span className='hover:cursor-pointer material-icons text-blue-500 text-3xl'>edit</span>
-        </a>
-        <a>
           <span className='hover:cursor-pointer material-icons text-red-500 text-3xl' onClick={onDelete}>
             delete
           </span>
