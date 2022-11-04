@@ -5,8 +5,7 @@ import "material-icons/iconfont/material-icons.css";
 import "material-icons/iconfont/material-icons.css";
 import AddEditModal from "./Modals/AddEditModal";
 import produtService from "../../Services/ProductsService";
-
-import { withRouter } from "../../Common/withRouter";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Products(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +13,11 @@ function Products(props) {
   const [productToDelete, setProductToDelete] = useState({});
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
+  if (!props.isLogin) {
+    return <Navigate to={"/Login"} />;
+  }
 
   useEffect(() => {
     produtService.getProducts().then(data => setProducts(data));
@@ -88,4 +92,4 @@ function Products(props) {
     </div>
   );
 }
-export default withRouter(Products);
+export default Products;

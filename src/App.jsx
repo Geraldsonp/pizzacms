@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import NavBar from "./Components/Header/NavBar";
 import Products from "./Components/ItemsList/Products";
 import Login from "./Components/Login/Login";
@@ -8,32 +8,39 @@ import AuthService from "./Services/AuthService";
 function App() {
   const [isLogin, setIslogin] = useState(false);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
-  }, []);
+  }, [isLogin]);
 
-  useEffect(() => {
-    if (user !== null) {
+  const handleLogIn = (userName, password) => {
+    AuthService.login(userName, password).then(() => {
       setIslogin(true);
-    } else {
-      setIslogin(false);
-    }
-  });
+      navigate("/home");
+    });
+  };
+
+  const HandleDemoLogin = () => {
+    AuthService.DemoUser();
+    setIslogin(true);
+    navigate("/home");
+  };
 
   const handleLogOut = () => {
     AuthService.logout();
     setUser(null);
     setIslogin(false);
+    navigate("/login");
   };
 
   return (
     <div className='grid grid-flow-row'>
-      <NavBar OnLogout={handleLogOut} UserName={user?.name} loginStatus={isLogin}></NavBar>
+      <NavBar OnLogout={handleLogOut} loginStatus={isLogin}></NavBar>
       <Routes>
-        <Route path='/' element={isLogin ? <Products></Products> : <Login></Login>}></Route>
-        <Route path='/home' element={isLogin ? <Products></Products> : <Login></Login>}></Route>
-        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<Products isLogin={isLogin}></Products>}></Route>
+        <Route path='/home' element={<Products isLogin={isLogin}></Products>}></Route>
+        <Route path='/login' element={<Login OnlogIn={() => handleLogIn} OnDemoLogIn={HandleDemoLogin} />} />
       </Routes>
     </div>
   );

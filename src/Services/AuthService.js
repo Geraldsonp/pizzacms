@@ -19,6 +19,10 @@ export class AuthService {
     localStorage.removeItem("user");
   }
 
+  DemoUser() {
+    localStorage.setItem("user", JSON.stringify({ name: "demo", token: "null" }));
+  }
+
   register(username, email, password) {
     return axios.post(URL + "auth/signup", {
       username,

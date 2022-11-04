@@ -1,19 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import authService from "../../Services/AuthService";
-
-import { withRouter } from "../../Common/withRouter";
+import { useNavigate } from "react-router-dom";
 
 const Login = props => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = event => {
     event.preventDefault();
-    authService.login(userName, password).then(() => {
-      props.router.navigate("/home");
-      window.location.reload();
-    });
+    props.OnLogIn(userName, password);
   };
 
   const handleUserNameChangeEvent = e => {
@@ -74,8 +70,8 @@ const Login = props => {
               <p className='text-dark text-sm text-center'>
                 Don't have an account?{" "}
                 <a
-                  href='#'
-                  className='text-indigo-500 font-bold hover:text-indigo-600 active:text-indigo-700 transition duration-100'>
+                  onClick={props.OnDemoLogIn}
+                  className='text-indigo-500 font-bold cursor-pointer hover:text-indigo-600 active:text-indigo-700 transition duration-100'>
                   Demo It
                 </a>
               </p>
@@ -86,4 +82,4 @@ const Login = props => {
     </div>
   );
 };
-export default withRouter(Login);
+export default Login;

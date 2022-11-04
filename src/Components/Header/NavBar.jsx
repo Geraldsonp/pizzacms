@@ -5,6 +5,12 @@ import "material-icons";
 import { useEffect } from "react";
 
 export default function NavBar(props) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, [props.loginStatus]);
+
   return (
     <div className='w-full'>
       <div class='bg-dark lg:pb-1'>
@@ -22,7 +28,7 @@ export default function NavBar(props) {
                 <div className='text-white text-center'>
                   <div className='block'>
                     <span className='material-icons'>manage_accounts</span>
-                    <p className='block text-center'>{props.UserName}</p>
+                    <p className='block text-center'>{user?.name}</p>
                   </div>
                   <button type='button' onClick={props.OnLogout} className='text-white rounded-sm bg-slate-700 px-4'>
                     Log Out
