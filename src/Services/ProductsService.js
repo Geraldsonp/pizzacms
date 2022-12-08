@@ -2,7 +2,7 @@ import axios from "axios";
 import AuthHeader from "./AuthHeader";
 
 //const URL = "https://localhost:7197/api/";
-const URL = "https://pizzeriawebapi.herokuapp.com/api/";
+const URL = "https://donremolopizzawebapi-production.up.railway.app/api/";
 
 const headers = AuthHeader();
 
