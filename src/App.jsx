@@ -41,7 +41,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Products isLogin={isLogin}></Products>}></Route>
         <Route path='/home' element={<Products isLogin={isLogin}></Products>}></Route>
-        <Route path='/login' element={<Login OnlogIn={handleLogIn} OnDemoLogIn={HandleDemoLogin} />} />
+        <Route path='/login' element={<Login OnLogIn={handleLogIn} OnDemoLogIn={HandleDemoLogin} />} />
       </Routes>
     </div>
   );
